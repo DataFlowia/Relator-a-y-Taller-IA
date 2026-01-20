@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso: Relatoría y Taller de Inteligencia Artificial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2a4dff;
+            --secondary: #1d1d8a;
+            --accent: #ff2d75;
+            --light: #ffffff;
+            --dark: #111827;
+            --success: #00d9ff;
+            --warning: #ffaa00;
+            --module1: #2a4dff;
+            --module2: #8a2dff;
+            --module3: #ff2d75;
+            --text-light: #ffffff;
+            --text-dark: #111827;
+            --text-gray: #d1d5db;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-light);
+            background: linear-gradient(135deg, #0a0f2b 0%, #141a34 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 60px 0 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .logo i {
+            animation: pulse 2s infinite;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto 30px;
+            opacity: 0.95;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+        
+        .modelo-car {
+            display: inline-block;
+            background: rgba(42, 77, 255, 0.25);
+            color: var(--success);
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-top: 10px;
+            border: 2px solid rgba(0, 217, 255, 0.4);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .modelo-car:hover {
+            background: rgba(42, 77, 255, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+        }
+        
+        .course-stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            min-width: 150px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .stat:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 217, 255, 0.6);
+        }
+        
+        .stat .number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--success);
+            display: block;
+            margin-bottom: 5px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .stat .label {
+            font-size: 1rem;
+            color: var(--text-light);
+            opacity: 0.95;
+            font-weight: 500;
+        }
+        
+        .modules-container {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+            margin: 60px 0;
+        }
+        
+        .module-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .module-title h2 {
+            font-size: 2.2rem;
+            display: inline-block;
+            padding: 10px 30px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            position: relative;
+            z-index: 2;
+            color: var(--text-light);
+            font-weight: 700;
+            border: 2px solid;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .module-1 .module-title h2 {
+            border-color: var(--module1);
+        }
+        
+        .module-2 .module-title h2 {
+            border-color: var(--module2);
+        }
+        
+        .module-3 .module-title h2 {
+            border-color: var(--module3);
+        }
+        
+        .module-title::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, transparent, var(--accent), transparent);
+            z-index: 1;
+        }
+        
+        .module-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            perspective: 1000px;
+        }
+        
+        .module-card {
+            background: linear-gradient(145deg, rgba(20, 25, 50, 0.9), rgba(10, 15, 35, 0.9));
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            transform-style: preserve-3d;
+            transform: rotateY(0deg);
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .module-card:hover {
+            transform: rotateY(10deg) translateY(-15px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .module-1 .module-card::before {
+            background: linear-gradient(to right, var(--module1), #00d9ff);
+        }
+        
+        .module-2 .module-card::before {
+            background: linear-gradient(to right, var(--module2), #c86bff);
+        }
+        
+        .module-3 .module-card::before {
+            background: linear-gradient(to right, var(--module3), #ff7aa8);
+        }
+        
+        .module-number {
+            font-size: 6rem;
+            font-weight: 900;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            opacity: 0.08;
+            color: white;
+            z-index: 0;
+        }
+        
+        .module-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            color: var(--text-light);
+            font-weight: 700;
+        }
+        
+        .module-1 .module-card h3 {
+            color: #00d9ff;
+        }
+        
+        .module-2 .module-card h3 {
+            color: #c86bff;
+        }
+        
+        .module-3 .module-card h3 {
+            color: #ff7aa8;
+        }
+        
+        .module-hours {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: var(--text-light);
+            font-weight: 600;
+        }
+        
+        .module-card p {
+            margin-bottom: 25px;
+            color: var(--text-light);
+            opacity: 0.95;
+            flex-grow: 1;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        
+        .objectives {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border-left: 6px solid;
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .module-1 .objectives {
+            border-left-color: var(--module1);
+        }
+        
+        .module-2 .objectives {
+            border-left-color: var(--module2);
+        }
+        
+        .module-3 .objectives {
+            border-left-color: var(--module3);
+        }
+        
+        .objectives h4 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--text-light);
+            font-weight: 700;
+        }
+        
+        .objectives ul {
+            padding-left: 20px;
+        }
+        
+        .objectives li {
+            margin-bottom: 10px;
+            color: var(--text-light);
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+        
+        .deliverables {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 6px solid var(--success);
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .deliverables h4 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--success);
+            font-weight: 700;
+        }
+        
+        .deliverables ul {
+            padding-left: 20px;
+        }
+        
+        .deliverables li {
+            margin-bottom: 10px;
+            color: var(--text-light);
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+        
+        .methodology {
+            background: rgba(10, 15, 40, 0.9);
+            padding: 50px;
+            border-radius: 20px;
+            margin: 60px 0;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+        
+        .methodology h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+            font-weight: 800;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .methodology > p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            opacity: 0.95;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+        
+        .methodology-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .method-item {
+            background: linear-gradient(145deg, rgba(30, 35, 70, 0.9), rgba(20, 25, 55, 0.9));
+            padding: 30px;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .method-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--success);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .method-item i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--success);
+        }
+        
+        .method-item h4 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--text-light);
+            font-weight: 700;
+        }
+        
+        .method-item p {
+            color: var(--text-light);
+            opacity: 0.95;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+        
+        .pricing {
+            background: linear-gradient(135deg, rgba(42, 77, 255, 0.25), rgba(255, 45, 117, 0.25));
+            padding: 60px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 60px 0;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+        
+        .pricing h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--text-light);
+            font-weight: 800;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .price {
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: var(--success);
+            margin-bottom: 10px;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        }
+        
+        .price-details {
+            font-size: 1.4rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            opacity: 0.95;
+            font-weight: 500;
+        }
+        
+        .pricing p {
+            color: var(--text-light);
+            opacity: 0.95;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 2px solid rgba(255, 255, 255, 0.15);
+            margin-top: 60px;
+            color: var(--text-light);
+            background: rgba(10, 15, 30, 0.8);
+            border-radius: 20px 20px 0 0;
+        }
+        
+        footer > p {
+            color: var(--text-light);
+            opacity: 0.95;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        footer a {
+            color: var(--success);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        footer a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+        
+        .signature {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid rgba(255, 255, 255, 0.15);
+        }
+        
+        .signature h4 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--text-light);
+            font-weight: 700;
+        }
+        
+        .signature p {
+            color: var(--text-light);
+            opacity: 0.95;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        .signature strong {
+            color: var(--success);
+            font-weight: 700;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .floating {
+            animation: float 5s ease-in-out infinite;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .module-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .course-stats {
+                gap: 15px;
+            }
+            
+            .stat {
+                min-width: 130px;
+                padding: 15px 20px;
+            }
+            
+            .module-card {
+                min-height: auto;
+                padding: 25px;
+            }
+            
+            .methodology, .pricing {
+                padding: 30px;
+            }
+            
+            .price {
+                font-size: 3.5rem;
+            }
+            
+            .module-title h2 {
+                font-size: 1.8rem;
+                padding: 8px 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .stat {
+                min-width: 110px;
+                padding: 12px 15px;
+            }
+            
+            .stat .number {
+                font-size: 2rem;
+            }
+            
+            .price {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-robot floating"></i>
+                    <span>DataflowIA</span>
+                </div>
+                <h1>Relatoría y Taller de Inteligencia Artificial</h1>
+                <p class="subtitle">Estructura de 3 módulos progresivos que maximiza el aprendizaje en 10 horas y asegura resultados tangibles para los participantes. Usando modelo CAR.</p>
+                <a href="https://dataflowia.com/modelo-car" class="modelo-car" target="_blank">
+                    <i class="fas fa-external-link-alt"></i> Conoce el Modelo CAR
+                </a>
+                
+                <div class="course-stats">
+                    <div class="stat">
+                        <span class="number">3</span>
+                        <span class="label">Módulos</span>
+                    </div>
+                    <div class="stat">
+                        <span class="number">10</span>
+                        <span class="label">Horas Totales</span>
+                    </div>
+                    <div class="stat">
+                        <span class="number">60%</span>
+                        <span class="label">Práctica</span>
+                    </div>
+                    <div class="stat">
+                        <span class="number">100%</span>
+                        <span class="label">Resultados</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <main>
+            <div class="modules-container">
+                <!-- Módulo 1 -->
+                <section class="module-1">
+                    <div class="module-title">
+                        <h2>Módulo 1: Fundamentos y Conceptos de IA</h2>
+                    </div>
+                    
+                    <div class="module-cards">
+                        <div class="module-card">
+                            <div class="module-number">01</div>
+                            <div class="module-hours">3 horas</div>
+                            <h3>Fundamentos y Conceptos de IA</h3>
+                            <p>Comprender qué es la IA, sus aplicaciones prácticas y dominar conceptos clave para uso profesional y personal.</p>
+                            
+                            <div class="objectives">
+                                <h4>Contenidos:</h4>
+                                <ul>
+                                    <li>Introducción a la Inteligencia Artificial: definiciones, tipos (IA generativa, predictiva, conversacional)</li>
+                                    <li>Casos de uso en el trabajo: automatización de tareas, análisis de datos, generación de contenido</li>
+                                    <li>Aplicaciones en la vida cotidiana: asistentes personales, organización, aprendizaje</li>
+                                    <li>Conceptos esenciales: prompts, tokens, contexto, alucinaciones, sesgos</li>
+                                    <li>Ética y limitaciones de la IA</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="deliverables">
+                                <h4>Entregables del alumno:</h4>
+                                <ul>
+                                    <li>Documento con casos de uso identificados para su área laboral</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Módulo 2 -->
+                <section class="module-2">
+                    <div class="module-title">
+                        <h2>Módulo 2: Plataformas de IA y Aplicaciones Prácticas</h2>
+                    </div>
+                    
+                    <div class="module-cards">
+                        <div class="module-card">
+                            <div class="module-number">02</div>
+                            <div class="module-hours">4 horas</div>
+                            <h3>Plataformas de IA y Aplicaciones Prácticas</h3>
+                            <p>Dominar el uso de las principales plataformas de IA y desarrollar habilidades de prompt engineering.</p>
+                            
+                            <div class="objectives">
+                                <h4>Contenidos:</h4>
+                                <ul>
+                                    <li>ChatGPT: generación de texto, análisis y conversación avanzada</li>
+                                    <li>Claude: razonamiento complejo y documentación técnica</li>
+                                    <li>Gemini: integración con Google Workspace y multimodalidad</li>
+                                    <li>Perplexity: investigación y búsqueda con fuentes</li>
+                                    <li>DeepSeek, Qwen y Meta AI: alternativas y casos específicos</li>
+                                    <li>Técnicas de prompt engineering: estructuración, iteración, refinamiento</li>
+                                    <li>Ejercicios prácticos: creación de contenido, análisis de datos, resolución de problemas</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="deliverables">
+                                <h4>Entregables del alumno:</h4>
+                                <ul>
+                                    <li>Portafolio de prompts efectivos y casos resueltos con diferentes plataformas</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Módulo 3 -->
+                <section class="module-3">
+                    <div class="module-title">
+                        <h2>Módulo 3: Desarrollo Web y Presentaciones con IA</h2>
+                    </div>
+                    
+                    <div class="module-cards">
+                        <div class="module-card">
+                            <div class="module-number">03</div>
+                            <div class="module-hours">3 horas</div>
+                            <h3>Desarrollo Web y Presentaciones con IA</h3>
+                            <p>Crear un website funcional y presentaciones profesionales utilizando herramientas de IA.</p>
+                            
+                            <div class="objectives">
+                                <h4>Contenidos:</h4>
+                                <ul>
+                                    <li>Introducción al desarrollo web: HTML, CSS, JS básico, estructura de páginas</li>
+                                    <li>Uso de IA para generar código: Claude, ChatGPT para desarrollo</li>
+                                    <li>Plataformas no-code potenciadas con IA: WordPress, Wix, Webflow</li>
+                                    <li>Creación de presentaciones efectivas con IA: diseño, contenido, visualización</li>
+                                    <li>Proyecto práctico guiado: desarrollo de landing page personal o portafolio</li>
+                                    <li>Publicación y compartir resultados</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="deliverables">
+                                <h4>Entregables del alumno:</h4>
+                                <ul>
+                                    <li>Website personal/profesional publicado</li>
+                                    <li>Presentación final del proyecto</li>
+                                    <li>Glosario de Conceptos</li>
+                                    <li>Podcast</li>
+                                    <li>Infografías</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <!-- Metodología -->
+            <section class="methodology">
+                <h2>Metodología del Curso</h2>
+                <p>Enfoque práctico y centrado en resultados tangibles para los participantes.</p>
+                
+                <div class="methodology-grid">
+                    <div class="method-item">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <h4>40% Teoría Explicativa</h4>
+                        <p>Conceptos fundamentales explicados de manera clara y directa.</p>
+                    </div>
+                    
+                    <div class="method-item">
+                        <i class="fas fa-laptop-code"></i>
+                        <h4>60% Práctica Hands-on</h4>
+                        <p>Ejercicios prácticos con herramientas reales de IA.</p>
+                    </div>
+                    
+                    <div class="method-item">
+                        <i class="fas fa-tasks"></i>
+                        <h4>Evaluación Continua</h4>
+                        <p>Seguimiento mediante entregables específicos en cada módulo.</p>
+                    </div>
+                    
+                    <div class="method-item">
+                        <i class="fas fa-book-open"></i>
+                        <h4>Material de Apoyo</h4>
+                        <p>Recursos y materiales disponibles después del curso.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Precio -->
+            <section class="pricing">
+                <h2>Inversión del Curso</h2>
+                <div class="price">15 UF</div>
+                <div class="price-details">Total por 10 horas de formación (1.5 UF/hora)</div>
+                <p>Curso completo con todos los módulos, materiales y soporte incluidos.</p>
+            </section>
+        </main>
+        
+        <footer>
+            <p>Propuesta de curso estructurado para maximizar el aprendizaje en inteligencia artificial.</p>
+            <p>Visita nuestros recursos: 
+                <a href="https://dataflowia.com/inteligencia-artificial" target="_blank">Ética en IA</a> | 
+                <a href="https://dataflowia.com/aplicaciones" target="_blank">Aplicaciones de IA</a> | 
+                <a href="https://dataflowia.com/website" target="_blank">Desarrollo Web con IA</a>
+            </p>
+            
+            <div class="signature">
+                <h4>Atentamente,</h4>
+                <p><strong>Rodrigo Cárcamo Hurtado</strong></p>
+                <p>CEO DataflowIA</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Efecto de animación 3D para las tarjetas de módulo
+        document.querySelectorAll('.module-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateY = ((x - centerX) / centerX) * 10;
+                const rotateX = ((centerY - y) / centerY) * 10;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-15px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+                setTimeout(() => {
+                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+                }, 300);
+            });
+        });
+        
+        // Efecto de aparición suave al hacer scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Aplicar a todos los módulos
+        document.querySelectorAll('.module-card, .method-item, .pricing').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
